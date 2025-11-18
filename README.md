@@ -1,4 +1,4 @@
-# Welkom to the Ansible part of the workshop
+# Welcome to the Ansible part of the workshop
 
 ## The basics
 - Where is the Ansible Automation Server: https://caap.fvz.ansible-labs.de
