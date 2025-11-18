@@ -1,4 +1,4 @@
----
+ion: ---
 - name: Install Webserver
   hosts: rhel
   become: true
@@ -60,7 +60,7 @@
     
     - name: show version
       ansible.builtin.debug:
-        msg: "{{ ansible_facts['ansible_local']['webserver']['general']['version'] | int + 1 }}"
+        msg: "Config version: {{ ansible_facts['ansible_local']['webserver']['general']['version'] | int + 1 }}"
       when: mode == "update"
     
     - name: Write the webserver serial out as a custom fact
