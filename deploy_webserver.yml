@@ -45,7 +45,7 @@
     - name: Check if webserver.fact exists
       ansible.builtin.stat:
         path: "{{ facts_dir }}/webserver.fact"
-        register: webserver_fact_stat
+      register: webserver_fact_stat
         
     - name: Write the webserver configuration version out as a custom fact
       community.general.ini_file:
