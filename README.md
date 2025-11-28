@@ -30,7 +30,7 @@ This workshop has been designed such that **you** will need to do most of the wo
 ## Controller Building Blocks
 You need to create some building blocks in AAP for this workshop. This document explains what you need to make. When you are done, go back to the README.md in the workshop repo.
 
-> [!NOTE] wherever you can and/or need to specify an Organization, choose `TechXchangeNL`, unless stated otherwise.
+Wherever you can and/or need to specify an Organization, choose `TechXchangeNL`, unless stated otherwise.
 
 
 #### Project
@@ -104,14 +104,21 @@ For the other playbooks:
 ### API Token
 Part of the workshop is showing how you can run stuff _in_ AAP _from_ HashiCorp Terraform Cloud. For this, you need to provide a token from AAP to your HashiCorp Terraform Cloud workspace. You can create a token yourself using _API token_ under _Access Management_ in the menu. Choose write access. Copy/Paste the token somewhere, because it will only be shown once!
 
-The following building blocks are needed for the new Terraform Actions feature and are 
+## EDA building blocks
+The following building blocks are needed for the new Terraform Actions feature and are made under `Ansible Decision`.
 
-### EDA Project
+Wherever you can and/or need to specify an Organization, choose `TechXchangeNL`, unless stated otherwise.
 
+### Project
+Make a project with the same URL as the project you made for the Controller. We have choosen to put the playbooks for controller and rulebooks for EDA in the same repo. You still need to define a sperate project for EDA.
 
-### EDA Credentials
+### Credentials
 These are made under `Automation Decisions > Infrastructure > Credentials` We need two:
 - A credential to enable EDA rulebook actions to lauch job templates and workflows in the Controller. It needs to be of type `Red Hat Ansible Automation Platform` Use your provided username and password and the url `https://caap.fvz.ansible-labs.de/api/controller`
 - A credential that HCP Terraform Actions will use to be able to send events to EDA. It needs to be of type `Basic Event Stream`. You can camoe up with any username and password as long as you remember them for when they are needed to configure the HCP Terraform Action.
 
-### EDA 
+### Event Stream
+Define an Event Stream. This is used by Terraform Actions later on to emit events to. Use the event stream type `Basic Event Stream` and provide the credential of the same type. After creation it will generate a unique URL that Terraform Actions needs, together with the username and password of the credential.
+
+### Rulebook Activation
+This defines and runs the listener for the events. Use the rulebook from the project you just created. The credential is the one for the controller. For `Event Stream` you need to make something called a mapping which maps the legacy source definition to this stream. There is only one mapping available so that is easy. Set the log level to debug which would help you when things don't work.
