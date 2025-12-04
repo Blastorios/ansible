@@ -3,6 +3,7 @@
   tasks:
     - name: Apply a terraform plan
       hashicorp.terraform.run:
+        workspace_id: 'ws-ovJarapQxBKhBC2p'
         run_message: 'Ansible-Managed'
         auto_apply: true
         tf_timeout: 6000
