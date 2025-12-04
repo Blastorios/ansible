@@ -1,5 +1,10 @@
 - name: HCP
   hosts: all
   tasks:
-  - name: Apply a terraform plan
-
+    - name: Apply a terraform plan
+      hashicorp.terraform.run:
+        run_message: 'Ansible-Managed'
+        auto_apply: true
+        tf_timeout: 6000
+        poll_interval: 5
+        poll_timeout: 1200
